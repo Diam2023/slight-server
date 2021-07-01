@@ -110,9 +110,7 @@ public class HttpResponseHandler {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
             status = HttpResponseStatus.NOT_FOUND;
-            // e.printStackTrace();
-            System.out.println(e.getMessage());
-            new FileNotFoundException("request fiel: " + req.uri() + "not found").printStackTrace();
+            e.printStackTrace();
         } catch (EOFException e) {
             status = HttpResponseStatus.SERVICE_UNAVAILABLE;
             e.printStackTrace();
