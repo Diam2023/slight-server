@@ -1,4 +1,9 @@
 #
+# shell
+#
+*.sh
+
+#
 # Standard Maven .gitignore
 #
 target/
