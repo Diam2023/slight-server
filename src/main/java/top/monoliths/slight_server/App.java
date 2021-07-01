@@ -9,17 +9,15 @@ import top.monoliths.slight_server.kernel.ConfigData;
 import top.monoliths.slight_server.server.HttpServer;
 
 /**
- * Hello world!
+ * slight server
+ * @author <a href="mailto:https://monoliths-uni/github.com>monoliths</a>"
+ * @version 1.0.0
  */
 public final class App {
 
-    private static final String configPath =
-        "./web-config.json";
-
-    private App() {}
+    private static final String configPath = "./web-config.json";
 
     /**
-     * Says hello to the world.
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
@@ -50,8 +48,10 @@ public final class App {
              * get HttpServer Inctance
              */
             HttpServer server = new HttpServer(configData);
+            // start server
             server.start();
         } catch (Exception e) {
+            // print exception
             e.printStackTrace();
         }
     }

@@ -11,7 +11,7 @@ import java.net.InetSocketAddress;
 import top.monoliths.slight_server.kernel.ConfigData;
 
 /**
- * netty server 2018/11/1.
+ * netty server
  */
 public class HttpServer {
 

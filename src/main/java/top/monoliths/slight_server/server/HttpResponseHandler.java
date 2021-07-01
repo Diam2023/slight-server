@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * to handle request
  *
- * @author <a href="mailto:https://monoliths-uni/github.com"
+ * @author <a href="mailto:https://monoliths-uni/github.com>monoliths</a>"
  * @version 1.0.0
  */
 public class HttpResponseHandler {
