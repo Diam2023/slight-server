@@ -17,10 +17,8 @@ public final class App {
 
     private static final String configPath = "./web-config.json";
 
-    /**
-     * @param args The arguments of the program.
-     */
-    public static void main(String[] args) {
+    public static ConfigData initializeConfig() {
+        ConfigData result = null;
         try (
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(configPath)))
         ) {
@@ -43,13 +41,29 @@ public final class App {
              * load config data inctance
              */
             Gson gson = new Gson();
-            ConfigData configData = gson.fromJson(data.toString(), ConfigData.class);
-            /**
-             * get HttpServer Inctance
-             */
-            HttpServer server = new HttpServer(configData);
-            // start server
-            server.start();
+            result = gson.fromJson(data.toString(), ConfigData.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * @param args The arguments of the program.
+     */
+    public static void main(String[] args) {
+        try (
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(configPath)))
+        ) {
+            ConfigData configData;
+            if ((configData = initializeConfig()) != null) {
+                /**
+                 * get HttpServer Inctance
+                 */
+                HttpServer server = new HttpServer(configData);
+                // start server
+                server.start();
+            }
         } catch (Exception e) {
             // print exception
             e.printStackTrace();
