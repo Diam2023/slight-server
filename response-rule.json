@@ -1,0 +1,44 @@
+[
+    {
+        "extensionName": ".jpg",
+        "binary": true,
+        "charset": null,
+        "head": "image/jpeg"
+    },
+    {
+        "extensionName": ".png",
+        "binary": true,
+        "charset": null,
+        "head": "image/png"
+    },
+    {
+        "extensionName": ".ico",
+        "binary": true,
+        "charset": null,
+        "head": "image/x-icon"
+    },
+    {
+        "extensionName": ".html",
+        "binary": true,
+        "charset": "charset=UTF-8",
+        "head": "text/html"
+    },
+    {
+        "extensionName": ".css",
+        "binary": true,
+        "charset": "charset=UTF-8",
+        "head": "text/css"
+    },
+    {
+        "extensionName": ".js",
+        "binary": true,
+        "charset": "charset=UTF-8",
+        "head": "application/javascript"
+    },
+    {
+        "extensionName": ".json",
+        "binary": true,
+        "charset": "charset=UTF-8",
+        "head": "application/json"
+    }
+]
