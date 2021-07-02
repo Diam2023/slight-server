@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+body {
+    z-index: 100;
+    background-color: rgba(177, 177, 177, 0.171);
+}
+
+h1 {
+    opacity: 0;
+    z-index: 1000;
+    min-width: 20em;
+    max-width: 50vw;
+    min-height: 10em;
+    max-height: 20vh;
+    text-align: center;
+    line-height: 10em;
+    color: rgb(34, 144, 187);
+    margin: 30vh 25vw;
+    box-shadow: .1em .1em .5em rgba(24, 24, 24, 0.651);
+    background-color: rgba(114, 114, 114, 0.3);
+    transition: .5s;
+}
+
+h1:hover {
+    border-radius: .5em;
+    box-shadow: 12px 13px 1em rgba(24, 24, 24, 0.651);
+}

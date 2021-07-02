@@ -1,7 +1,7 @@
 {
     "local": "localhost",
     "port": 80,
-    "configPath": "C:/Users/monoliths/Documents/web/bangbang101-frame",
+    "configPath": "./web",
     "home": "index.html",
     "debug": true
 }
