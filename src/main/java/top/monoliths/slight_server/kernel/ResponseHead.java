@@ -64,9 +64,9 @@ public class ResponseHead {
     public String toString() {
         StringBuffer result = new StringBuffer();
 
-        result.append("extension name: " + getExtensionName());
-        result.append("head: " + getHead());
-        result.append("charset: " + getCharset());
+        result.append("extension name: " + getExtensionName() + "\n\r");
+        result.append("head: " + getHead() + "\n\r");
+        result.append("charset: " + getCharset() + "\n\r");
 
         return result.toString();
     }
