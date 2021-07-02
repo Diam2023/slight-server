@@ -31,4 +31,43 @@ public class ResponseHead {
      * response data head
      */
     private String head;
+
+    public String getCharset() {
+        return charset;
+    }
+
+    public String getExtensionName() {
+        return extensionName;
+    }
+
+    public String getHead() {
+        return head;
+    }
+
+    public void setBinary(boolean binary) {
+        this.binary = binary;
+    }
+
+    public void setCharset(String charset) {
+        this.charset = charset;
+    }
+
+    public void setExtensionName(String extensionName) {
+        this.extensionName = extensionName;
+    }
+
+    public void setHead(String head) {
+        this.head = head;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer result = new StringBuffer();
+
+        result.append("extension name: " + getExtensionName());
+        result.append("head: " + getHead());
+        result.append("charset: " + getCharset());
+
+        return result.toString();
+    }
 }
