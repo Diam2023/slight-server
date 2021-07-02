@@ -10,7 +10,7 @@ package top.monoliths.slight_server.kernel;
  * @version 1.1.0
  */
 @SuppressWarnings("unused")
-public class ResponseHead {
+public class ResponseRule {
 
     /**
      * request extension name of file type
@@ -63,10 +63,11 @@ public class ResponseHead {
     @Override
     public String toString() {
         StringBuffer result = new StringBuffer();
-
-        result.append("extension name: " + getExtensionName() + "\n\r");
-        result.append("head: " + getHead() + "\n\r");
-        result.append("charset: " + getCharset() + "\n\r");
+        
+        result.append(" |- extension name: " + getExtensionName() + "\n\r");
+        result.append(" |- head: " + getHead() + "\n\r");
+        result.append(" |- charset: " + getCharset() + "\n\r");
+        result.append(" |--------------------------------\n\r");
 
         return result.toString();
     }
