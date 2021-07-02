@@ -9,7 +9,6 @@ package top.monoliths.slight_server.kernel;
  * @since 1.1.0
  * @version 1.1.0
  */
-@SuppressWarnings("unused")
 public class ResponseRule {
 
     /**
@@ -20,7 +19,7 @@ public class ResponseRule {
     /**
      * if use binary then is true
      */
-    private boolean binary;
+    public boolean binary;
 
     /**
      * encode UTF-8 or binary none

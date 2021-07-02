@@ -9,6 +9,8 @@ import io.netty.handler.codec.http.HttpHeaderNames;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.handler.codec.http.HttpVersion;
 import io.netty.util.CharsetUtil;
+import top.monoliths.slight_server.kernel.ResponseRule;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.EOFException;
@@ -18,7 +20,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+
 import java.net.URLDecoder;
+
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +30,12 @@ import java.util.List;
 /**
  * to handle request
  *
- * @author <a href="mailto:https://monoliths-uni/github.com>monoliths</a>"
- * @version 1.0.0
+ * @author monoliths
+ * @version 1.1.0
+ * @since 1.0.0
  */
 public class HttpResponseHandler {
-    
+
     private static final int DEFAULT_BUFFER_SIZE = 8192;
 
     private static final int MAX_BUFFER_SIZE = Integer.MAX_VALUE - 8;
@@ -44,66 +49,29 @@ public class HttpResponseHandler {
 
         // default set
         charset = "; charset=UTF-8";
-        head = "text/html" + charset;
+        head = "text/plain" + charset;
         body = Unpooled.buffer();
         status = HttpResponseStatus.SERVICE_UNAVAILABLE;
         try {
-            String path =
-                (
-                    ((req.uri()).equals("/"))
-                        ? (HttpServer.configData.getConfigPath() + "/" + HttpServer.configData.getHome())
-                        : (HttpServer.configData.getConfigPath() + URLDecoder.decode(req.uri(), "UTF-8"))
-                );
+            // if root redirect to home
+            String path = (((req.uri()).equals("/"))
+                    ? (HttpServer.configData.getConfigPath() + "/" + HttpServer.configData.getHome())
+                    : (HttpServer.configData.getConfigPath() + URLDecoder.decode(req.uri(), "UTF-8")));
 
-            switch (path.substring(path.lastIndexOf("."))) {
-                // byte
-                case ".jpg":
-                    head = "image/jpeg";
+            // get file extention of request
+            String requestExtensionName = path.substring(path.lastIndexOf("."));
+
+            // initialize ruleUnit
+            ResponseRule ruleUnit = HttpServer.responseRuls.get(requestExtensionName);
+            if (ruleUnit != null) {
+                if (!ruleUnit.binary) {
+                    head = ruleUnit.getHead() + "; " + ruleUnit.getCharset();
+                    body = getFileByteBufByUTF8(path);
+                } else {
+                    head = ruleUnit.getHead();
                     body = getFileByteBufByByte(path);
-                    status = HttpResponseStatus.OK;
-                    break;
-                case ".png":
-                    head = "image/png";
-                    body = getFileByteBufByByte(path);
-                    status = HttpResponseStatus.OK;
-                    break;
-                case ".ico":
-                    // wait to updata
-                    head = "image/x-icon";
-                    body = getFileByteBufByByte(path);
-                    status = HttpResponseStatus.OK;
-                    break;
-                // utf8
-                case ".html":
-                    charset = "; charset=UTF-8";
-                    head = "text/html" + charset;
-                    body = getFileByteBufByUTF8(path);
-                    status = HttpResponseStatus.OK;
-                    break;
-                case ".css":
-                    charset = "; charset=UTF-8";
-                    head = "text/css" + charset;
-                    body = getFileByteBufByUTF8(path);
-                    status = HttpResponseStatus.OK;
-                    break;
-                case ".js":
-                    charset = "; charset=UTF-8";
-                    head = "application/javascript" + charset;
-                    body = getFileByteBufByUTF8(path);
-                    status = HttpResponseStatus.OK;
-                    break;
-                case ".json":
-                    charset = "; charset=UTF-8";
-                    head = "application/json" + charset;
-                    body = getFileByteBufByUTF8(path);
-                    status = HttpResponseStatus.OK;
-                    break;
-                default:
-                    charset = "; charset=UTF-8";
-                    head = "text/plain" + charset;
-                    body = Unpooled.buffer();
-                    status = HttpResponseStatus.SERVICE_UNAVAILABLE;
-                    break;
+                }
+                status = HttpResponseStatus.OK;
             }
         } catch (UnsupportedEncodingException e) {
             status = HttpResponseStatus.SERVICE_UNAVAILABLE;
@@ -122,14 +90,15 @@ public class HttpResponseHandler {
             e.printStackTrace();
         }
 
+        // intialize response
         response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, status, body);
 
+        // set response header
         response.headers().set(HttpHeaderNames.CONTENT_TYPE, head);
 
         return response;
     }
 
-    
     /**
      * read data use utf-8 encode
      * 
@@ -174,7 +143,7 @@ public class HttpResponseHandler {
         if (!file.exists() || file.isDirectory()) {
             throw new FileNotFoundException("File: " + path + " not found");
         }
-        
+
         byte[] data = null;
         List<byte[]> bufs = null;
         byte[] byteResult = null;
@@ -186,14 +155,13 @@ public class HttpResponseHandler {
             do {
                 byte[] buf = new byte[Math.min(remaining, DEFAULT_BUFFER_SIZE)];
                 int nread = 0;
-    
+
                 // read to EOF which may read more or less than buffer size
-                while ((n = bufferedInputStream.read(buf, nread,
-                        Math.min(buf.length - nread, remaining))) > 0) {
+                while ((n = bufferedInputStream.read(buf, nread, Math.min(buf.length - nread, remaining))) > 0) {
                     nread += n;
                     remaining -= n;
                 }
-    
+
                 if (nread > 0) {
                     if (MAX_BUFFER_SIZE - total < nread) {
                         throw new OutOfMemoryError("Required array size too large");
@@ -215,15 +183,15 @@ public class HttpResponseHandler {
                 // if the last call to read returned -1 or the number of bytes
                 // requested have been read then break
             } while (n >= 0 && remaining > 0);
-    
-            
+
             if (bufs == null) {
                 if (byteResult == null) {
                     return Unpooled.copiedBuffer(new byte[0]);
                 }
-                return Unpooled.copiedBuffer(byteResult.length == total ? byteResult : Arrays.copyOf(byteResult, total));
+                return Unpooled
+                        .copiedBuffer(byteResult.length == total ? byteResult : Arrays.copyOf(byteResult, total));
             }
-    
+
             byteResult = new byte[total];
             int offset = 0;
             remaining = total;
@@ -238,9 +206,8 @@ public class HttpResponseHandler {
         } catch (Exception e) {
             throw e;
         }
-        
-        ByteBuf result = Unpooled.copiedBuffer(data);            
+
+        ByteBuf result = Unpooled.copiedBuffer(data);
         return result;
     }
-
 }
