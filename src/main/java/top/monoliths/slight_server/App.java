@@ -21,8 +21,8 @@ import top.monoliths.slight_server.server.HttpServer;
  */
 public final class App {
 
-    private static final String configPath = "./web-config.json";
-    private static final String rulePath = "./response-rule.json";
+    private static final String configPath = "./config/web-config.json";
+    private static final String rulePath = "./config/response-rule.json";
 
     public static ConfigData initializeConfig() {
         ConfigData result = null;
