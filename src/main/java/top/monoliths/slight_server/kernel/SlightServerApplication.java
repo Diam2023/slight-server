@@ -27,12 +27,12 @@ public class SlightServerApplication {
     /**
      * initialize config data
      * 
-     * @return {@code null} if not found or can not read, {@code configData} true set
+     * @return {@code null} if not found or can not read, {@code configData} true
+     *         set
      */
     public static ConfigData initializeConfig(String cp) {
         ConfigData result = null;
-        try (BufferedReader bufferedReader = new BufferedReader(
-                new InputStreamReader(new FileInputStream(cp)))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(cp)))) {
             StringBuffer data = new StringBuffer();
             bufferedReader.lines().forEach(line -> {
                 // filter special characters
@@ -59,7 +59,8 @@ public class SlightServerApplication {
      * initialize responses map
      * 
      * @param rp
-     * @return {@code null} if not found or can not read, {@code RespomseRulesMap} true set
+     * @return {@code null} if not found or can not read, {@code RespomseRulesMap}
+     *         true set
      */
     public static ResponseRulesMap initializeResponseMap(String rp) {
         ResponseRulesMap result = new ResponseRulesMap();
@@ -107,11 +108,13 @@ public class SlightServerApplication {
         // load web config
         configData = initializeConfig(CONFIGPATH);
         LOG.info("\n\r -----------load web config----------- \n" + configData.toString());
- 
+
         // get HttpServer Inctance
         HttpServer server = new HttpServer(configData, responseRuls);
-        
-        LOG.info("\n\r server: http://" + configData.getLocal() + ":" + configData.getPort() + "/" + configData.getHome());
+
+        LOG.info("\n\r \n ------------------------------------------------ \n   server: http://" + configData.getLocal()
+                + ":" + configData.getPort() + "/" + configData.getHome()
+                + "\n ------------------------------------------------");
         // start server
         server.start();
     }
