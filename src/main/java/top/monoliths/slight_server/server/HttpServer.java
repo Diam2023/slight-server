@@ -58,9 +58,6 @@ public class HttpServer {
         ChannelFuture channelFuture = bootstrap.bind(new InetSocketAddress(configData.getLocal(), configData.getPort()))
                 .sync();
 
-        System.out.println(
-                "server: http://" + configData.getLocal() + ":" + configData.getPort() + "/" + configData.getHome());
-
         channelFuture.channel().closeFuture().sync();
     }
 }
