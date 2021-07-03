@@ -19,25 +19,25 @@
     },
     {
         "extensionName": ".html",
-        "binary": true,
+        "binary": false,
         "charset": "charset=UTF-8",
         "head": "text/html"
     },
     {
         "extensionName": ".css",
-        "binary": true,
+        "binary": false,
         "charset": "charset=UTF-8",
         "head": "text/css"
     },
     {
         "extensionName": ".js",
-        "binary": true,
+        "binary": false,
         "charset": "charset=UTF-8",
         "head": "application/javascript"
     },
     {
         "extensionName": ".json",
-        "binary": true,
+        "binary": false,
         "charset": "charset=UTF-8",
         "head": "application/json"
     }
