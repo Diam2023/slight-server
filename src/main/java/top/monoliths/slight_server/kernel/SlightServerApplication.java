@@ -2,6 +2,9 @@ package top.monoliths.slight_server.kernel;
 
 import com.google.gson.Gson;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
@@ -12,11 +15,14 @@ import top.monoliths.slight_server.kernel.SlightServerApplication;
 import top.monoliths.slight_server.server.HttpServer;
 
 public class SlightServerApplication {
+
+    private static final Log LOG = LogFactory.getLog(SlightServerApplication.class);
+
     /**
      * deffine config path
      */
-    protected static final String configPath = "./config/web-config.json";
-    protected static final String rulePath = "./config/response-rule.json";
+    protected static final String CONFIGPATH = "./config/web-config.json";
+    protected static final String RULEPATH = "./config/response-rule.json";
 
     /**
      * initialize config data
@@ -52,6 +58,7 @@ public class SlightServerApplication {
     /**
      * initialize responses map
      * 
+     * @param rp
      * @return {@code null} if not found or can not read, {@code RespomseRulesMap} true set
      */
     public static ResponseRulesMap initializeResponseMap(String rp) {
@@ -78,7 +85,7 @@ public class SlightServerApplication {
                 if (responseHead != null && responseHead.getExtensionName() != null) {
                     result.put(responseHead.getExtensionName(), responseHead);
                 } else {
-                    System.out.println("ignore rule:" + responseHead.toString());
+                    LOG.info("\n\r ignore rule:" + responseHead.toString());
                 }
             }
         } catch (Exception e) {
@@ -94,20 +101,17 @@ public class SlightServerApplication {
         ResponseRulesMap responseRuls;
 
         // load rules
-        responseRuls = initializeResponseMap(rulePath);
-        System.out.println("-------------load rules-------------\n\r");
-        System.out.println(responseRuls.toString());
+        responseRuls = initializeResponseMap(RULEPATH);
+        LOG.info("\n\r -------------load rules------------- \n" + responseRuls.toString());
 
         // load web config
-        configData = initializeConfig(configPath);
-        System.out.println("-----------load web config----------\n\r");
-        System.out.println(configData.toString() + "\n\r");
-
+        configData = initializeConfig(CONFIGPATH);
+        LOG.info("\n\r -----------load web config----------- \n" + configData.toString());
+ 
         // get HttpServer Inctance
         HttpServer server = new HttpServer(configData, responseRuls);
         
-        System.out.println(
-                "server: http://" + configData.getLocal() + ":" + configData.getPort() + "/" + configData.getHome());
+        LOG.info("\n\r server: http://" + configData.getLocal() + ":" + configData.getPort() + "/" + configData.getHome());
         // start server
         server.start();
     }
