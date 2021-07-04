@@ -1,4 +1,4 @@
-package top.monoliths.slight_server.kernel;
+package top.monoliths.slight_server.utils;
 
 /**
  * ConfigData

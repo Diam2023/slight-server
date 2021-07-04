@@ -10,8 +10,8 @@ import io.netty.handler.logging.LoggingHandler;
 
 import java.net.InetSocketAddress;
 
-import top.monoliths.slight_server.kernel.ConfigData;
 import top.monoliths.slight_server.kernel.ResponseRulesMap;
+import top.monoliths.slight_server.utils.ConfigData;
 
 /**
  * netty server

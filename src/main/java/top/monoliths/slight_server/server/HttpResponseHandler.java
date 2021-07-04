@@ -9,7 +9,7 @@ import io.netty.handler.codec.http.HttpHeaderNames;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.handler.codec.http.HttpVersion;
 import io.netty.util.CharsetUtil;
-import top.monoliths.slight_server.kernel.ResponseRule;
+import top.monoliths.slight_server.utils.ResponseRule;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
