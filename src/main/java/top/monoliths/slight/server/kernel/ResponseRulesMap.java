@@ -1,13 +1,16 @@
-package top.monoliths.slight_server.kernel;
+package top.monoliths.slight.server.kernel;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-import top.monoliths.slight_server.utils.ResponseRule;
+import top.monoliths.slight.server.utils.ResponseRule;
 
 /**
- * package class
+ * to save response rules.
+ *
+ * @author monoliths
  */
-public class ResponseRulesMap extends ConcurrentHashMap<String, ResponseRule> {
+public final class ResponseRulesMap extends ConcurrentHashMap<String, ResponseRule> {
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();

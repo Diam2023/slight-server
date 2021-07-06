@@ -1,4 +1,4 @@
-package top.monoliths.slight_server.utils;
+package top.monoliths.slight.server.utils;
 
 /**
  * to save response method tag message
@@ -62,7 +62,7 @@ public class ResponseRule {
     @Override
     public String toString() {
         StringBuffer result = new StringBuffer();
-        
+
         result.append(" |- extension name: " + getExtensionName() + "\n\r");
         result.append(" |- head: " + getHead() + "\n\r");
         result.append(" |- charset: " + getCharset() + "\n\r");

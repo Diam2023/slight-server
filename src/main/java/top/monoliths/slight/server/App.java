@@ -1,19 +1,18 @@
-package top.monoliths.slight_server;
+package top.monoliths.slight.server;
 
-import top.monoliths.slight_server.kernel.SlightServerApplication;
+import top.monoliths.slight.server.kernel.SlightServerApplication;
 
 /**
- * slight server
+ * slight server.
  *
  * @author monoliths
  * @version 1.0.0
  */
 public final class App extends SlightServerApplication {
-
     /**
      * @param args The arguments of the program.
      */
-    public static void main(String[] args) throws Exception {
+    public static void main(final String[] args) throws Exception {
         launch(args);
     }
 }

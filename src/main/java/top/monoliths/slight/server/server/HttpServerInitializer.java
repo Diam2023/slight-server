@@ -1,4 +1,4 @@
-package top.monoliths.slight_server.server;
+package top.monoliths.slight.server.server;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
@@ -8,12 +8,19 @@ import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 
 /**
- * HttpServerInitializer
+ * HttpServerInitializer.
+ * 
+ * @author monoliths
  */
 public class HttpServerInitializer extends ChannelInitializer<Channel> {
 
+    /**
+     * max content length.
+     */
+    private static final int MAX_CONTENT_LENGTH = 512 * 1024;
+
     @Override
-    protected void initChannel(Channel channel) throws Exception {
+    protected final void initChannel(final Channel channel) throws Exception {
         ChannelPipeline pipeline = channel.pipeline();
 
         /**
@@ -24,7 +31,7 @@ public class HttpServerInitializer extends ChannelInitializer<Channel> {
         /**
          * max content length
          */
-        pipeline.addLast("aggregator", new HttpObjectAggregator(512 * 1024));
+        pipeline.addLast("aggregator", new HttpObjectAggregator(MAX_CONTENT_LENGTH));
 
         /**
          * compressor

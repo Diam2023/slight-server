@@ -1,4 +1,4 @@
-package top.monoliths.slight_server.server;
+package top.monoliths.slight.server.server;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -9,7 +9,7 @@ import io.netty.handler.codec.http.HttpHeaderNames;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.handler.codec.http.HttpVersion;
 import io.netty.util.CharsetUtil;
-import top.monoliths.slight_server.utils.ResponseRule;
+import top.monoliths.slight.server.utils.ResponseRule;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -28,19 +28,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * to handle request
+ * to handle request.
  *
  * @author monoliths
  * @version 1.1.0
  * @since 1.0.0
  */
-public class HttpResponseHandler {
+public final class HttpResponseHandler {
+    /**
+     * change public constructor to private.
+     */
+    private HttpResponseHandler() {
+        throw new IllegalStateException("Utility class");
+    }
 
+    /**
+     * default maximum buffer size of file.
+     */
     private static final int DEFAULT_BUFFER_SIZE = 8192;
 
+    /**
+     * max buffer size of file.
+     */
     private static final int MAX_BUFFER_SIZE = Integer.MAX_VALUE - 8;
 
-    public static FullHttpResponse response(FullHttpRequest req) {
+    /**
+     * responses request files.
+     * 
+     * @param req requery path
+     * @return FullHttpResponse
+     */
+    public static FullHttpResponse response(final FullHttpRequest req) {
         String head;
         String charset;
         ByteBuf body;
@@ -54,7 +72,7 @@ public class HttpResponseHandler {
         status = HttpResponseStatus.SERVICE_UNAVAILABLE;
         try {
             // if root redirect to home
-            String path = (((req.uri()).equals("/"))
+            String path = (("/".equals(req.uri()))
                     ? (HttpServer.configData.getConfigPath() + "/" + HttpServer.configData.getHome())
                     : (HttpServer.configData.getConfigPath() + URLDecoder.decode(req.uri(), "UTF-8")));
 
@@ -66,7 +84,7 @@ public class HttpResponseHandler {
             if (ruleUnit != null) {
                 if (!ruleUnit.binary) {
                     head = ruleUnit.getHead() + "; " + ruleUnit.getCharset();
-                    body = getFileByteBufByUTF8(path);
+                    body = getFileByteBufByUtf8(path);
                 } else {
                     head = ruleUnit.getHead();
                     body = getFileByteBufByByte(path);
@@ -100,16 +118,16 @@ public class HttpResponseHandler {
     }
 
     /**
-     * read data use utf-8 encode
-     * 
-     * @param path
-     * @return
-     * @throws FileNotFoundException
-     * @throws EOFException
-     * @throws IOException
-     * @throws OutOfMemoryError
+     * read data use utf-8 encode.
+     *
+     * @param path request path
+     * @return ByteBuf data of request file
+     * @throws FileNotFoundException FileNotFoundException
+     * @throws EOFException          EOFException
+     * @throws IOException           IOException
+     * @throws OutOfMemoryError      OutOfMemoryError
      */
-    public static ByteBuf getFileByteBufByUTF8(String path)
+    public static ByteBuf getFileByteBufByUtf8(final String path)
             throws FileNotFoundException, EOFException, IOException, OutOfMemoryError {
         File file = new File(path);
         if (!file.exists() || file.isDirectory()) {
@@ -128,16 +146,16 @@ public class HttpResponseHandler {
     }
 
     /**
-     * to response file data with ByteBuf
-     * 
+     * to response file data with ByteBuf.
+     *
      * @param path file path
-     * @return
-     * @throws FileNotFoundException
-     * @throws EOFException
-     * @throws IOException
-     * @throws OutOfMemoryError
+     * @return ByteBuf data of request file
+     * @throws FileNotFoundException FileNotFoundException
+     * @throws EOFException          EOFException
+     * @throws IOException           IOException
+     * @throws OutOfMemoryError      OutOfMemoryError
      */
-    public static ByteBuf getFileByteBufByByte(String path)
+    public static ByteBuf getFileByteBufByByte(final String path)
             throws FileNotFoundException, EOFException, IOException, OutOfMemoryError {
         File file = new File(path);
         if (!file.exists() || file.isDirectory()) {
