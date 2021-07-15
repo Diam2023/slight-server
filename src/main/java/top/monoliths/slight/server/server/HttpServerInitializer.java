@@ -24,22 +24,22 @@ public class HttpServerInitializer extends ChannelInitializer<Channel> {
         ChannelPipeline pipeline = channel.pipeline();
 
         /**
-         * http encode
+         * http encode.
          */
         pipeline.addLast("cwodec", new HttpServerCodec());
 
         /**
-         * max content length
+         * max content length.
          */
         pipeline.addLast("aggregator", new HttpObjectAggregator(MAX_CONTENT_LENGTH));
 
         /**
-         * compressor
+         * compressor.
          */
         pipeline.addLast("compressor", new HttpContentCompressor());
 
         /**
-         * handler message request
+         * handler message request.
          */
         pipeline.addLast(new HttpRequestHandler());
     }

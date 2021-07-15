@@ -47,18 +47,28 @@ public class HttpServer {
      * @throws Exception Exception
      */
     public final void start() throws Exception {
+        /**
+         * get ServerBootstrap inctance to bind and start server.
+         */
         ServerBootstrap bootstrap = new ServerBootstrap();
 
         /**
-         * boss
+         * create executor boss.
+         * adapt to accept new connect.
          */
         EventLoopGroup boss = new NioEventLoopGroup();
 
         /**
-         * work
+         * create executor work.
+         * adapt to read or write data of connect.
          */
         EventLoopGroup work = new NioEventLoopGroup();
 
+        /**
+         * group to issue executor modules.
+         * channel to define IO module.
+         * childHandler business processing logic
+         */
         bootstrap.group(boss, work).handler(new LoggingHandler(LogLevel.DEBUG)).channel(NioServerSocketChannel.class)
                 .childHandler(new HttpServerInitializer());
 
