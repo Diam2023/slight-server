@@ -6,7 +6,7 @@ import top.monoliths.slight.server.kernel.SlightServerApplication;
  * slight server.
  *
  * @author monoliths
- * @version 1.0.0
+ * @version 1.1.1
  */
 public final class App extends SlightServerApplication {
     /**
