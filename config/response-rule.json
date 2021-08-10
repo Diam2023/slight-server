@@ -18,6 +18,12 @@
         "head": "image/x-icon"
     },
     {
+        "extensionName": ".mp4",
+        "binary": true,
+        "charset": null,
+        "head": "video/mp4"
+    },
+    {
         "extensionName": ".html",
         "binary": false,
         "charset": "charset=UTF-8",
