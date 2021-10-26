@@ -10,9 +10,12 @@ import top.monoliths.slight.server.utils.ConfigData;
 import top.monoliths.slight.server.utils.ResponseRule;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.regex.Pattern;
 
 /**
@@ -30,17 +33,31 @@ public class SlightServerApplication {
     /**
      * deffine config path.
      */
-    protected static final String CONFIGPATH = "./config/web-config.json";
+    protected static final String DEFAULT_CONFIG_PATH = "./config/web-config.json";
 
     /**
      * deffine rules path.
      */
-    protected static final String RULEPATH = "./config/response-rule.json";
+    protected static final String DEFAULT_RULES_PATH = "./config/response-rule.json";
+
+    protected static final String CONFIG_COMMAND = "-c";
+
+    protected static final String RULES_COMMAND = "-r";
 
     /**
-     * .
+     * pattern.
      */
     protected static final Pattern PT = Pattern.compile("\\s*|\t|\r|\n");
+
+    /**
+     * config data
+     */
+    public static ConfigData configData;
+
+    /**
+     * response rules data.
+     */
+    public static ResponseRulesMap responseRules;
 
     /**
      * initialize config data.
@@ -128,24 +145,55 @@ public class SlightServerApplication {
      */
     public static void launch(final String[] args) throws Exception {
 
-        ConfigData configData;
-        ResponseRulesMap responseRuls;
+        String rulesPath = DEFAULT_RULES_PATH;
+        String configPath = DEFAULT_CONFIG_PATH;
+
+        ArrayList<String> argsList = new ArrayList<>(Arrays.asList(args));
+
+        Iterator<String> argsIterator = argsList.iterator();
+
+        while (argsIterator.hasNext()) {
+            String arg = argsIterator.next();
+            if (CONFIG_COMMAND.equals(arg) == true) {
+                String path = argsIterator.next();
+                if ("" != path) {
+                    rulesPath = path;
+                } else {
+                    throw new IllegalArgumentException("web-config.json can not null!");
+                }
+            } else if (RULES_COMMAND.equals(arg) == true) {
+                String path = argsIterator.next();
+                if ("" != path) {
+                    rulesPath = path;
+                } else {
+                    throw new IllegalArgumentException("responsse-rule.json can not null!");
+                }
+            }
+        }
+
+        // if exist
+        File rulesFile = new File(rulesPath);
+        File configFile = new File(configPath);
+
+        if (!rulesFile.exists() || !configFile.exists()) {
+            throw new IllegalArgumentException("rules file or config file not exists.");
+        }
 
         // load rules
-        responseRuls = initializeResponseMap(RULEPATH);
+        responseRules = initializeResponseMap(rulesPath);
 
         // load web config
-        configData = initializeConfig(CONFIGPATH);
+        configData = initializeConfig(configPath);
 
         if (configData.getDebug()) {
 
-            LOG.debug("\n\r -------------load rules------------- \n" + responseRuls.toString());
+            LOG.debug("\n\r -------------load rules------------- \n" + responseRules.toString());
 
             LOG.debug("\n\r -----------load web config----------- \n" + configData.toString());
 
         }
         // get HttpServer Inctance
-        HttpServer server = new HttpServer(configData, responseRuls);
+        HttpServer server = new HttpServer(configData, responseRules);
 
         // output LOGO
         LOG.info("\n\r \n------------------------------------------------\n"
