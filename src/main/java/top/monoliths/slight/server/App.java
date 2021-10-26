@@ -11,6 +11,7 @@ import top.monoliths.slight.server.kernel.SlightServerApplication;
 public final class App extends SlightServerApplication {
     /**
      * @param args The arguments of the program.
+     * ARGS : first argument is path of config path.
      */
     public static void main(final String[] args) throws Exception {
         launch(args);
