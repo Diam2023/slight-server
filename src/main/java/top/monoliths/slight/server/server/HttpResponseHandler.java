@@ -9,6 +9,7 @@ import io.netty.handler.codec.http.HttpHeaderNames;
 import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.handler.codec.http.HttpVersion;
 import io.netty.util.CharsetUtil;
+import top.monoliths.slight.server.kernel.SlightServerApplication;
 import top.monoliths.slight.server.utils.ResponseRule;
 
 import java.io.BufferedInputStream;
@@ -93,19 +94,29 @@ public final class HttpResponseHandler {
             }
         } catch (UnsupportedEncodingException e) {
             status = HttpResponseStatus.SERVICE_UNAVAILABLE;
-            e.printStackTrace();
+            if (SlightServerApplication.configData.getDebug()) {
+                e.printStackTrace();
+            }
         } catch (FileNotFoundException e) {
             status = HttpResponseStatus.NOT_FOUND;
-            e.printStackTrace();
+            if (SlightServerApplication.configData.getDebug()) {
+                e.printStackTrace();
+            }
         } catch (EOFException e) {
             status = HttpResponseStatus.SERVICE_UNAVAILABLE;
-            e.printStackTrace();
+            if (SlightServerApplication.configData.getDebug()) {
+                e.printStackTrace();
+            }
         } catch (OutOfMemoryError e) {
             status = HttpResponseStatus.SERVICE_UNAVAILABLE;
-            e.printStackTrace();
+            if (SlightServerApplication.configData.getDebug()) {
+                e.printStackTrace();
+            }
         } catch (IOException e) {
             status = HttpResponseStatus.SERVICE_UNAVAILABLE;
-            e.printStackTrace();
+            if (SlightServerApplication.configData.getDebug()) {
+                e.printStackTrace();
+            }
         }
 
         // intialize response
