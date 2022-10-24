@@ -38,7 +38,25 @@ buildNumber.properties
 .vscode/
 
 #
+# slight-server
+#
+server/slight-server-*-jar-with-dependencies.jar
+demo/*
+
+#
 # git
 #
 .editorconfig
 .gitattributes
+
+
+#
+# CMake
+#
+build
+CMakeLists.txt.user
+
+#
+# Qt
+#
+qtInstallerFramework/*

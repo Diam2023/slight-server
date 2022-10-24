@@ -1,7 +1,7 @@
 {
     "local": "localhost",
     "port": 80 ,
-    "configPath": "./web",
+    "configPath": "./",
     "home": "index.html",
     "debug": true
 }

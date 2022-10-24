@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="source">
+        <file>style/style.qss</file>
+        <file>data/template/config/web-config.json</file>
+        <file>data/template/config/response-rule.json</file>
+    </qresource>
+</RCC>
