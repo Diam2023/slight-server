@@ -10,7 +10,6 @@
  */
 
 #pragma once
-// #ifndef RuleItem
 
 #include <QString>
 #include <QJsonObject>
@@ -124,5 +123,3 @@ namespace slight_server
      } // namespace config
 
 } // namespace slight_server
-
-// #endif // !RuleItem

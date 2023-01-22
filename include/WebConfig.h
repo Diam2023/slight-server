@@ -10,7 +10,6 @@
  */
 
 #pragma once
-// #ifndef WebConfig
 
 #include <QString>
 #include <QFile>
@@ -148,5 +147,3 @@ namespace slight_server
         };
     }
 }
-
-// #endif // !WebConfig

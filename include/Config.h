@@ -11,14 +11,13 @@
 
 #pragma once
 
-// #ifndef Config
-
 #include <QString>
 #include <QFile>
 #include <QJsonObject>
 #include <QJsonDocument>
 #include <QJsonParseError>
 #include <QDebug>
+#include <QIODevice>
 
 /**
  * @brief slight server namespace a core of slight server
@@ -110,5 +109,3 @@ namespace slight_server
         };
     }
 }
-
-// #endif // !Config

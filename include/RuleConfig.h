@@ -8,7 +8,8 @@
  * @copyright Copyright (c) 2021
  * 
  */
-#pragma once
+#ifndef SLIGHT_SERVER_INCLUDE_RULECONFIG_H_
+#define SLIGHT_SERVER_INCLUDE_RULECONFIG_H_
 
 #include <iostream>
 
@@ -91,4 +92,4 @@ namespace slight_server
     }
 }
 
-// #endif // !RuleConfig
+#endif // SLIGHT_SERVER_INCLUDE_RULECONFIG_H_

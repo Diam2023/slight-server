@@ -11,6 +11,8 @@
 
 #include "SlightServer.h"
 
+// TODO Rewirte Call Java With JNI
+
 bool slight_server::core::SlightServer::init()
 {
     QDir config(webPath);
@@ -24,10 +26,13 @@ bool slight_server::core::SlightServer::init()
     JARPath = applicationDir.absoluteFilePath(tr("slight-server-1.0-jar-with-dependencies.jar"));
     applicationDir.cdUp();
     // java dir
-    applicationDir.cd(tr("jre1.8.0_202"));
-    applicationDir.cd(tr("bin"));
+    applicationDir.cd(tr("/usr/bin"));
+    // applicationDir.cd(tr("jre1.8.0_202"));
+    // applicationDir.cd(tr("bin"));
     // java path
-    javaPath = applicationDir.absoluteFilePath(tr("java.exe"));
+    // javaPath = applicationDir.absoluteFilePath(tr("java.exe"));
+    javaPath = applicationDir.absoluteFilePath(tr("java"));
+    qDebug() << javaPath;
 
     // jvm argument.
     JVMArgument = "-Dfile.encoding=utf-8";
@@ -51,11 +56,13 @@ void slight_server::core::SlightServer::run()
 
     QProcess javaProccess;
     javaProccess.setWorkingDirectory(webPath);
+
     javaProccess.start(javaPath, argument);
 
     if (!javaProccess.isOpen())
     {
-        javaProccess.errorString();
+        qDebug() << javaProccess.errorString();
+        emit outputMessage(javaProccess.errorString());
     }
 
     while (javaProccess.waitForFinished(100) == false)

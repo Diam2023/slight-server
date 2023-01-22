@@ -4,20 +4,20 @@
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="MainWindow.ui" line="14"/>
+        <location filename="mainwindow.ui" line="14"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="412"/>
         <source>MainWindow</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="31"/>
+        <location filename="mainwindow.ui" line="31"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="420"/>
         <source>LOAD WEB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="77"/>
-        <location filename="MainWindow.ui" line="525"/>
+        <location filename="mainwindow.ui" line="77"/>
+        <location filename="mainwindow.ui" line="525"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="413"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="421"/>
         <location filename="mainwindow.cpp" line="173"/>
@@ -25,7 +25,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="95"/>
+        <location filename="mainwindow.ui" line="95"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="422"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -37,45 +37,45 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="125"/>
+        <location filename="mainwindow.ui" line="125"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="435"/>
         <source>Tab 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="159"/>
+        <location filename="mainwindow.ui" line="159"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="429"/>
         <source>LOCAL: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="213"/>
+        <location filename="mainwindow.ui" line="213"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="430"/>
         <source>PORT: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="261"/>
+        <location filename="mainwindow.ui" line="261"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="431"/>
         <source>CONFIGPATH: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="309"/>
+        <location filename="mainwindow.ui" line="309"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="432"/>
         <source>HOME: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="357"/>
+        <location filename="mainwindow.ui" line="357"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="433"/>
         <source>DEBUG: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="385"/>
-        <location filename="MainWindow.ui" line="425"/>
-        <location filename="MainWindow.ui" line="473"/>
+        <location filename="mainwindow.ui" line="385"/>
+        <location filename="mainwindow.ui" line="425"/>
+        <location filename="mainwindow.ui" line="473"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="434"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="437"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="440"/>
@@ -83,69 +83,69 @@ p, li { white-space: pre-wrap; }
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="401"/>
-        <location filename="MainWindow.ui" line="449"/>
+        <location filename="mainwindow.ui" line="401"/>
+        <location filename="mainwindow.ui" line="449"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="438"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="441"/>
         <source>Tab 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="415"/>
+        <location filename="mainwindow.ui" line="415"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="436"/>
         <source>SERVER_CONFIG.json</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="463"/>
+        <location filename="mainwindow.ui" line="463"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="439"/>
         <source>RULE_CONFIG.json</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="505"/>
+        <location filename="mainwindow.ui" line="505"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="442"/>
         <source>MENU</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="514"/>
+        <location filename="mainwindow.ui" line="514"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="443"/>
         <source>SETTING</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="530"/>
+        <location filename="mainwindow.ui" line="530"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="414"/>
         <source>OPEN CONFIG</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="535"/>
+        <location filename="mainwindow.ui" line="535"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="415"/>
         <source>OPEN WEB VIEW</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="540"/>
+        <location filename="mainwindow.ui" line="540"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="416"/>
         <source>OPEN RECENTLY WEB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="545"/>
+        <location filename="mainwindow.ui" line="545"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="417"/>
         <source>OPEN WEB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="550"/>
+        <location filename="mainwindow.ui" line="550"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="418"/>
         <source>DARK MODE</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MainWindow.ui" line="555"/>
+        <location filename="mainwindow.ui" line="555"/>
         <location filename="build/slight-server_autogen/include/ui_mainwindow.h" line="419"/>
         <source>OPEN FOLDER</source>
         <translation type="unfinished"></translation>

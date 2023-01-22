@@ -10,7 +10,6 @@
  */
 
 #include "Config.h"
-#include <QIODevice>
 
 slight_server::config::Config::Config()
 {
@@ -30,7 +29,7 @@ QJsonDocument slight_server::config::Config::readData(QString filePath)
 
     QFile file(filePath);
 
-    // file.open(QIODeviceBase::ReadWrite);
+    file.open(QIODeviceBase::ReadWrite);
 
     auto jsonText = file.readAll();
 
@@ -60,7 +59,7 @@ bool slight_server::config::Config::writeTo(QByteArray data, QString filePath)
 
     QFile file(filePath);
 
-    // err = file.open(QIODeviceBase::ReadWrite);
+    err = file.open(QIODeviceBase::ReadWrite);
 
     if (err == true) {
         file.write(data);

@@ -9,10 +9,8 @@
  * @copyright Copyright (c) 2021
  * 
  */
-#ifndef SLIGHT_SERVER_H
-#define SLIGHT_SERVER_H
-
-#pragma once
+#ifndef SLIGHT_SERVER_INCLUDE_SLIGHTSERVER_H_
+#define SLIGHT_SERVER_INCLUDE_SLIGHTSERVER_H_
 
 #include <QCoreApplication>
 #include <QApplication>
@@ -47,7 +45,12 @@ namespace slight_server
             void outputMessage(QString message);
 
         public:
-            explicit SlightServer(QWidget *parent = nullptr);
+            SlightServer(QWidget *parent = nullptr);
+
+            // Qt6 New Freature
+            SlightServer()=delete;
+            SlightServer(const SlightServer&)=delete;
+            
             SlightServer(QString webPaths)
             {
                 setWebPath(webPath);
@@ -86,4 +89,5 @@ namespace slight_server
     }
 }
 
-#endif // !SlightServer
+
+#endif // SLIGHT_SERVER_INCLUDE_SLIGHTSERVER_H_
