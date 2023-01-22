@@ -23,7 +23,7 @@ bool slight_server::core::SlightServer::init()
 
     QDir applicationDir = QApplication::applicationDirPath();
     applicationDir.cd(tr("server"));
-    JARPath = applicationDir.absoluteFilePath(tr("slight-server-1.0-jar-with-dependencies.jar"));
+    JARPath = applicationDir.absoluteFilePath(tr("slight-server-1.1-jar-with-dependencies.jar"));
     applicationDir.cdUp();
     // java dir
     applicationDir.cd(tr("/usr/bin"));
